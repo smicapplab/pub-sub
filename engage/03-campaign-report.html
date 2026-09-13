@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Engage — Campaign Report</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: { brand: { primary: '#E1171E', accent: '#701E82' } },
+          fontFamily: { sans: ['Plus Jakarta Sans', 'sans-serif'] }
+        }
+      }
+    }
+  </script>
+  <style>
+    body { font-family: 'Plus Jakarta Sans', sans-serif; }
+    .scrollbar-thin::-webkit-scrollbar { width: 6px; }
+    .scrollbar-thin::-webkit-scrollbar-track { background: transparent; }
+    .scrollbar-thin::-webkit-scrollbar-thumb { background: rgba(161,161,170,0.3); border-radius: 10px; }
+    /* Sparkline bar chart simulation */
+    .bar { display: inline-block; background: #E1171E; border-radius: 2px 2px 0 0; width: 100%; }
+  </style>
+</head>
+<body class="bg-zinc-50 text-zinc-900 antialiased min-h-screen flex">
+
+  <!-- Sidebar -->
+  <aside class="hidden lg:flex h-screen w-64 flex-col flex-shrink-0 bg-white/70 border-r border-zinc-200/80 backdrop-blur-xl sticky top-0">
+    <div class="flex-1 flex flex-col overflow-y-auto scrollbar-thin p-3 space-y-4">
+      <div>
+        <div class="px-2 pb-1.5 text-[10px] font-semibold uppercase tracking-wider text-zinc-400">Current Workspace</div>
+        <button class="w-full flex items-center gap-2.5 px-2 py-2 rounded-xl hover:bg-zinc-100 transition-colors text-left">
+          <div class="w-8 h-8 rounded-full bg-brand-primary flex items-center justify-center text-white text-xs font-bold shrink-0">PH</div>
+          <div class="flex-1 min-w-0">
+            <div class="text-xs font-bold text-zinc-900 truncate">Pizza Hut Philippines</div>
+            <div class="text-[10px] text-zinc-400">PIZZA_HUT</div>
+          </div>
+        </button>
+      </div>
+      <div class="space-y-1">
+        <a href="#" class="flex items-center gap-3 px-3 py-2 rounded-xl text-xs font-medium text-zinc-500 hover:bg-zinc-100 transition-colors">
+          <svg class="w-4 h-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+          <span>Reports</span>
+        </a>
+        <a href="#" class="flex items-center gap-3 px-3 py-2 rounded-xl text-xs font-medium text-zinc-500 hover:bg-zinc-100 transition-colors">
+          <svg class="w-4 h-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+          <span>Stores</span>
+        </a>
+        <div class="px-2 pt-3 pb-1 text-[10px] font-semibold uppercase tracking-wider text-zinc-400">Engage</div>
+        <a href="01-campaigns-list.html" class="flex items-center gap-3 px-3 py-2 rounded-xl text-xs font-semibold bg-brand-primary/10 text-brand-primary">
+          <svg class="w-4 h-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/></svg>
+          <span>Campaigns</span>
+        </a>
+        <a href="#" class="flex items-center gap-3 px-3 py-2 rounded-xl text-xs font-medium text-zinc-500 hover:bg-zinc-100 transition-colors">
+          <svg class="w-4 h-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+          <span>Audiences</span>
+        </a>
+        <a href="#" class="flex items-center gap-3 px-3 py-2 rounded-xl text-xs font-medium text-zinc-500 hover:bg-zinc-100 transition-colors">
+          <svg class="w-4 h-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"/></svg>
+          <span>Templates</span>
+        </a>
+      </div>
+    </div>
+    <div class="p-3 border-t border-zinc-200/80 shrink-0">
+      <button class="w-full flex items-center gap-2.5 px-2 py-1 rounded-xl hover:bg-zinc-100 transition-colors text-left min-h-[44px]">
+        <div class="w-8 h-8 rounded-full bg-violet-100 flex items-center justify-center text-violet-700 text-xs font-bold shrink-0">MR</div>
+        <div class="flex-1 min-w-0">
+          <div class="text-xs font-bold text-zinc-900 truncate">Maria Reyes</div>
+          <span class="px-1.5 text-[9px] font-mono font-semibold rounded bg-brand-primary/10 text-brand-primary border border-brand-primary/20">CompanyAdmin</span>
+        </div>
+      </button>
+    </div>
+  </aside>
+
+  <!-- Main -->
+  <div class="flex-1 flex flex-col min-h-screen min-w-0">
+
+    <!-- Header -->
+    <header class="sticky top-0 z-10 bg-white/80 backdrop-blur-xl border-b border-zinc-200/80 px-6 py-3 flex items-center gap-3">
+      <a href="01-campaigns-list.html" class="min-w-[44px] min-h-[44px] flex items-center justify-center rounded-xl hover:bg-zinc-100 transition-colors text-zinc-500">
+        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
+      </a>
+      <div class="flex-1 min-w-0">
+        <div class="text-[10px] font-semibold uppercase tracking-wider text-zinc-400">Engage / Campaigns</div>
+        <h1 class="text-base font-bold text-zinc-900 truncate">August Birthday Treats — Report</h1>
+      </div>
+      <div class="flex items-center gap-2 shrink-0">
+        <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200">
+          <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 inline-block"></span>
+          Sent
+        </span>
+        <button class="px-3 py-2 rounded-xl border border-zinc-200 text-xs font-semibold text-zinc-600 hover:bg-zinc-50 transition-colors min-h-[44px] flex items-center gap-2">
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+          Export
+        </button>
+        <button class="px-3 py-2 rounded-xl bg-brand-primary text-white text-xs font-semibold hover:bg-red-700 transition-colors min-h-[44px] flex items-center gap-2">
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+          Duplicate Campaign
+        </button>
+      </div>
+    </header>
+
+    <main class="flex-1 p-6 space-y-5">
+
+      <!-- Campaign meta row -->
+      <div class="flex flex-wrap items-center gap-x-6 gap-y-1 text-xs text-zinc-500">
+        <span><span class="text-zinc-400">Sent:</span> <strong class="text-zinc-700">Aug 1, 2026 · 9:00 AM</strong></span>
+        <span><span class="text-zinc-400">Department:</span> <strong class="text-zinc-700">Marketing</strong></span>
+        <span><span class="text-zinc-400">Cost centre:</span> <strong class="text-zinc-700">CC-MKT-001</strong></span>
+        <span><span class="text-zinc-400">Created by:</span> <strong class="text-zinc-700">Maria Reyes</strong></span>
+        <span><span class="text-zinc-400">Channels:</span> <strong class="text-zinc-700">Email</strong></span>
+      </div>
+
+      <!-- KPI cards -->
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
+        <div class="bg-white rounded-2xl border border-zinc-200 p-4 text-center">
+          <div class="text-2xl font-bold text-zinc-900">12,308</div>
+          <div class="text-[10px] uppercase tracking-wider text-zinc-400 mt-0.5">Sent</div>
+        </div>
+        <div class="bg-white rounded-2xl border border-zinc-200 p-4 text-center">
+          <div class="text-2xl font-bold text-zinc-900">11,940</div>
+          <div class="text-[10px] uppercase tracking-wider text-zinc-400 mt-0.5">Delivered</div>
+          <div class="text-[10px] text-zinc-400">97.0%</div>
+        </div>
+        <div class="bg-white rounded-2xl border border-zinc-200 p-4 text-center">
+          <div class="text-2xl font-bold text-zinc-500">4,812</div>
+          <div class="text-[10px] uppercase tracking-wider text-zinc-400 mt-0.5">Opens</div>
+          <div class="text-[10px] text-zinc-400">39.1% <span class="text-[9px]">*unreliable</span></div>
+        </div>
+        <div class="bg-white rounded-2xl border border-zinc-200 p-4 text-center">
+          <div class="text-2xl font-bold text-blue-600">1,203</div>
+          <div class="text-[10px] uppercase tracking-wider text-zinc-400 mt-0.5">Clicks</div>
+          <div class="text-[10px] text-zinc-400">9.8%</div>
+        </div>
+        <div class="bg-white rounded-2xl border border-emerald-200 bg-emerald-50/50 p-4 text-center">
+          <div class="text-2xl font-bold text-emerald-700">284</div>
+          <div class="text-[10px] uppercase tracking-wider text-emerald-600 mt-0.5">Redemptions</div>
+          <div class="text-[10px] text-emerald-500">2.3%</div>
+        </div>
+        <div class="bg-white rounded-2xl border border-zinc-200 p-4 text-center">
+          <div class="text-2xl font-bold text-zinc-900">368</div>
+          <div class="text-[10px] uppercase tracking-wider text-zinc-400 mt-0.5">Unsubscribes</div>
+          <div class="text-[10px] text-zinc-400">3.0%</div>
+        </div>
+      </div>
+
+      <!-- ROI and cost row -->
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
+
+        <!-- Financial summary -->
+        <div class="bg-white rounded-2xl border border-zinc-200 p-5 space-y-4 lg:col-span-1">
+          <div class="text-[10px] font-semibold uppercase tracking-wider text-zinc-400">Financial Summary</div>
+          <div class="space-y-2 text-xs">
+            <div class="flex justify-between items-center">
+              <span class="text-zinc-500">Gateway cost (SES)</span>
+              <span class="font-semibold text-zinc-800">₱1,107.72</span>
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-zinc-500">Discount redeemed</span>
+              <span class="font-semibold text-zinc-800">₱42,600</span>
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-zinc-500">Total campaign cost</span>
+              <span class="font-semibold text-zinc-800">₱43,707.72</span>
+            </div>
+            <div class="border-t border-zinc-100 pt-2 flex justify-between items-center">
+              <span class="text-zinc-500">Revenue from redemptions</span>
+              <span class="font-semibold text-zinc-800">₱284,320</span>
+            </div>
+            <div class="flex justify-between items-center text-emerald-700">
+              <span class="font-semibold">Net Incremental Revenue</span>
+              <span class="font-bold text-base">₱240,612</span>
+            </div>
+          </div>
+          <div class="p-3 rounded-xl bg-zinc-50 border border-zinc-100 text-[10px] text-zinc-400">
+            Net revenue = sum of redemption baskets minus (treatment group size × control group AOV × control conversion rate) minus gateway cost.
+          </div>
+        </div>
+
+        <!-- Hourly redemption chart (simulated bars) -->
+        <div class="bg-white rounded-2xl border border-zinc-200 p-5 lg:col-span-2">
+          <div class="flex items-center justify-between mb-4">
+            <div class="text-[10px] font-semibold uppercase tracking-wider text-zinc-400">Redemptions by Hour (Aug 1)</div>
+            <span class="text-xs text-zinc-400">284 total</span>
+          </div>
+          <div class="flex items-end gap-1 h-28">
+            <!-- 24 hour bars, simulated height values -->
+            <div class="flex-1 flex flex-col items-center gap-1" title="0:00">
+              <div class="bar opacity-20" style="height:4px"></div>
+              <span class="text-[8px] text-zinc-300">0</span>
+            </div>
+            <div class="flex-1 flex flex-col items-center gap-1"><div class="bar opacity-20" style="height:3px"></div><span class="text-[8px] text-zinc-300">1</span></div>
+            <div class="flex-1 flex flex-col items-center gap-1"><div class="bar opacity-20" style="height:2px"></div><span class="text-[8px] text-zinc-300">2</span></div>
+            <div class="flex-1 flex flex-col items-center gap-1"><div class="bar opacity-20" style="height:2px"></div><span class="text-[8px] text-zinc-300">3</span></div>
+            <div class="flex-1 flex flex-col items-center gap-1"><div class="bar opacity-20" style="height:2px"></div><span class="text-[8px] text-zinc-300">4</span></div>
+            <div class="flex-1 flex flex-col items-center gap-1"><div class="bar opacity-30" style="height:4px"></div><span class="text-[8px] text-zinc-300">5</span></div>
+            <div class="flex-1 flex flex-col items-center gap-1"><div class="bar opacity-40" style="height:8px"></div><span class="text-[8px] text-zinc-300">6</span></div>
+            <div class="flex-1 flex flex-col items-center gap-1"><div class="bar opacity-50" style="height:16px"></div><span class="text-[8px] text-zinc-300">7</span></div>
+            <div class="flex-1 flex flex-col items-center gap-1"><div class="bar opacity-70" style="height:32px"></div><span class="text-[8px] text-zinc-300">8</span></div>
+            <div class="flex-1 flex flex-col items-center gap-1"><div class="bar" style="height:76px"></div><span class="text-[8px] text-zinc-400 font-semibold">9</span></div>
+            <div class="flex-1 flex flex-col items-center gap-1"><div class="bar opacity-90" style="height:92px"></div><span class="text-[8px] text-zinc-300">10</span></div>
+            <div class="flex-1 flex flex-col items-center gap-1"><div class="bar opacity-80" style="height:80px"></div><span class="text-[8px] text-zinc-300">11</span></div>
+            <div class="flex-1 flex flex-col items-center gap-1"><div class="bar opacity-60" style="height:56px"></div><span class="text-[8px] text-zinc-300">12</span></div>
+            <div class="flex-1 flex flex-col items-center gap-1"><div class="bar opacity-40" style="height:36px"></div><span class="text-[8px] text-zinc-300">13</span></div>
+            <div class="flex-1 flex flex-col items-center gap-1"><div class="bar opacity-30" style="height:24px"></div><span class="text-[8px] text-zinc-300">14</span></div>
+            <div class="flex-1 flex flex-col items-center gap-1"><div class="bar opacity-25" style="height:18px"></div><span class="text-[8px] text-zinc-300">15</span></div>
+            <div class="flex-1 flex flex-col items-center gap-1"><div class="bar opacity-20" style="height:12px"></div><span class="text-[8px] text-zinc-300">16</span></div>
+            <div class="flex-1 flex flex-col items-center gap-1"><div class="bar opacity-30" style="height:20px"></div><span class="text-[8px] text-zinc-300">17</span></div>
+            <div class="flex-1 flex flex-col items-center gap-1"><div class="bar opacity-20" style="height:14px"></div><span class="text-[8px] text-zinc-300">18</span></div>
+            <div class="flex-1 flex flex-col items-center gap-1"><div class="bar opacity-15" style="height:10px"></div><span class="text-[8px] text-zinc-300">19</span></div>
+            <div class="flex-1 flex flex-col items-center gap-1"><div class="bar opacity-10" style="height:6px"></div><span class="text-[8px] text-zinc-300">20</span></div>
+            <div class="flex-1 flex flex-col items-center gap-1"><div class="bar opacity-10" style="height:4px"></div><span class="text-[8px] text-zinc-300">21</span></div>
+            <div class="flex-1 flex flex-col items-center gap-1"><div class="bar opacity-10" style="height:3px"></div><span class="text-[8px] text-zinc-300">22</span></div>
+            <div class="flex-1 flex flex-col items-center gap-1"><div class="bar opacity-10" style="height:2px"></div><span class="text-[8px] text-zinc-300">23</span></div>
+          </div>
+          <div class="mt-3 text-[10px] text-zinc-400">Peak redemption window: 9:00–11:00 AM · 65% of total redemptions in first 2 hours</div>
+        </div>
+      </div>
+
+      <!-- Two-column: by store + redemption table -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+
+        <!-- By store breakdown -->
+        <div class="bg-white rounded-2xl border border-zinc-200 p-5">
+          <div class="text-[10px] font-semibold uppercase tracking-wider text-zinc-400 mb-4">Redemptions by Store</div>
+          <div class="space-y-2">
+            <div class="flex items-center gap-3">
+              <span class="text-xs text-zinc-600 w-36 truncate">Katipunan</span>
+              <div class="flex-1 bg-zinc-100 rounded-full h-2 overflow-hidden">
+                <div class="h-full rounded-full bg-brand-primary" style="width:82%"></div>
+              </div>
+              <span class="text-xs font-semibold text-zinc-800 w-8 text-right">82</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <span class="text-xs text-zinc-600 w-36 truncate">Cubao</span>
+              <div class="flex-1 bg-zinc-100 rounded-full h-2 overflow-hidden">
+                <div class="h-full rounded-full bg-brand-primary" style="width:62%"></div>
+              </div>
+              <span class="text-xs font-semibold text-zinc-800 w-8 text-right">62</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <span class="text-xs text-zinc-600 w-36 truncate">Araneta Center</span>
+              <div class="flex-1 bg-zinc-100 rounded-full h-2 overflow-hidden">
+                <div class="h-full rounded-full bg-brand-primary" style="width:47%"></div>
+              </div>
+              <span class="text-xs font-semibold text-zinc-800 w-8 text-right">47</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <span class="text-xs text-zinc-600 w-36 truncate">Marikina</span>
+              <div class="flex-1 bg-zinc-100 rounded-full h-2 overflow-hidden">
+                <div class="h-full rounded-full bg-brand-primary" style="width:38%"></div>
+              </div>
+              <span class="text-xs font-semibold text-zinc-800 w-8 text-right">38</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <span class="text-xs text-zinc-600 w-36 truncate">Cainta</span>
+              <div class="flex-1 bg-zinc-100 rounded-full h-2 overflow-hidden">
+                <div class="h-full rounded-full bg-brand-primary" style="width:30%"></div>
+              </div>
+              <span class="text-xs font-semibold text-zinc-800 w-8 text-right">30</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <span class="text-xs text-zinc-400 w-36 truncate">Other stores</span>
+              <div class="flex-1 bg-zinc-100 rounded-full h-2 overflow-hidden">
+                <div class="h-full rounded-full bg-zinc-300" style="width:25%"></div>
+              </div>
+              <span class="text-xs font-semibold text-zinc-500 w-8 text-right">25</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Delivery breakdown -->
+        <div class="bg-white rounded-2xl border border-zinc-200 p-5">
+          <div class="text-[10px] font-semibold uppercase tracking-wider text-zinc-400 mb-4">Delivery Health</div>
+          <div class="space-y-3 text-xs">
+            <div class="flex justify-between items-center">
+              <span class="text-zinc-600">Delivered</span>
+              <div class="flex items-center gap-2">
+                <div class="w-32 bg-zinc-100 rounded-full h-1.5"><div class="h-full rounded-full bg-emerald-500" style="width:97%"></div></div>
+                <span class="font-semibold text-zinc-800 w-16 text-right">11,940 (97%)</span>
+              </div>
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-zinc-600">Soft bounce</span>
+              <div class="flex items-center gap-2">
+                <div class="w-32 bg-zinc-100 rounded-full h-1.5"><div class="h-full rounded-full bg-amber-400" style="width:1.4%"></div></div>
+                <span class="font-semibold text-zinc-800 w-16 text-right">172 (1.4%)</span>
+              </div>
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-zinc-600">Hard bounce</span>
+              <div class="flex items-center gap-2">
+                <div class="w-32 bg-zinc-100 rounded-full h-1.5"><div class="h-full rounded-full bg-rose-500" style="width:1.6%"></div></div>
+                <span class="font-semibold text-zinc-800 w-16 text-right">196 (1.6%)</span>
+              </div>
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-zinc-600">Spam complaint</span>
+              <div class="flex items-center gap-2">
+                <div class="w-32 bg-zinc-100 rounded-full h-1.5"><div class="h-full rounded-full bg-rose-400" style="width:0.2%"></div></div>
+                <span class="font-semibold text-zinc-800 w-16 text-right">8 (0.06%)</span>
+              </div>
+            </div>
+            <div class="border-t border-zinc-100 pt-2">
+              <div class="flex items-start gap-2 p-2 rounded-lg bg-emerald-50 border border-emerald-100">
+                <svg class="w-4 h-4 text-emerald-600 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                <span class="text-[10px] text-emerald-700"><strong>Sender health: Good.</strong> Bounce rate 1.6% and complaint rate 0.06% are well within Amazon SES limits (5% / 0.1%).</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Redemption log table -->
+      <div class="bg-white rounded-2xl border border-zinc-200 overflow-hidden">
+        <div class="flex items-center justify-between px-5 py-3 border-b border-zinc-100">
+          <div class="text-[10px] font-semibold uppercase tracking-wider text-zinc-400">Redemption Log</div>
+          <div class="flex items-center gap-2">
+            <div class="relative">
+              <svg class="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-zinc-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+              <input type="search" placeholder="Search…" class="pl-9 pr-3 py-2 text-xs border border-zinc-200 rounded-xl bg-white focus:outline-none focus:ring-2 focus:ring-brand-primary/30 w-40 min-h-[36px]" />
+            </div>
+          </div>
+        </div>
+        <div class="overflow-x-auto">
+          <table class="w-full text-xs">
+            <thead>
+              <tr class="border-b border-zinc-100">
+                <th class="text-left px-5 py-3 text-[10px] font-semibold uppercase tracking-wider text-zinc-400">Recipient</th>
+                <th class="text-left px-5 py-3 text-[10px] font-semibold uppercase tracking-wider text-zinc-400">Code</th>
+                <th class="text-left px-5 py-3 text-[10px] font-semibold uppercase tracking-wider text-zinc-400">Redeemed At</th>
+                <th class="text-left px-5 py-3 text-[10px] font-semibold uppercase tracking-wider text-zinc-400">Store</th>
+                <th class="text-right px-5 py-3 text-[10px] font-semibold uppercase tracking-wider text-zinc-400">Basket Value</th>
+                <th class="text-right px-5 py-3 text-[10px] font-semibold uppercase tracking-wider text-zinc-400">Discount Applied</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-zinc-50">
+              <tr class="hover:bg-zinc-50 transition-colors">
+                <td class="px-5 py-3 font-medium text-zinc-800">Maria Santos</td>
+                <td class="px-5 py-3 font-mono text-zinc-600">BDAY-MS-1042</td>
+                <td class="px-5 py-3 text-zinc-500">Aug 1, 2026 · 9:12 AM</td>
+                <td class="px-5 py-3 text-zinc-600">Katipunan</td>
+                <td class="px-5 py-3 text-right font-semibold text-zinc-800">₱1,250</td>
+                <td class="px-5 py-3 text-right text-emerald-700 font-semibold">₱375</td>
+              </tr>
+              <tr class="hover:bg-zinc-50 transition-colors">
+                <td class="px-5 py-3 font-medium text-zinc-800">Jose Dela Cruz</td>
+                <td class="px-5 py-3 font-mono text-zinc-600">BDAY-JD-2891</td>
+                <td class="px-5 py-3 text-zinc-500">Aug 1, 2026 · 9:34 AM</td>
+                <td class="px-5 py-3 text-zinc-600">Cubao</td>
+                <td class="px-5 py-3 text-right font-semibold text-zinc-800">₱890</td>
+                <td class="px-5 py-3 text-right text-emerald-700 font-semibold">₱267</td>
+              </tr>
+              <tr class="hover:bg-zinc-50 transition-colors">
+                <td class="px-5 py-3 font-medium text-zinc-800">Ana Reyes</td>
+                <td class="px-5 py-3 font-mono text-zinc-600">BDAY-AR-4405</td>
+                <td class="px-5 py-3 text-zinc-500">Aug 1, 2026 · 10:02 AM</td>
+                <td class="px-5 py-3 text-zinc-600">Araneta Center</td>
+                <td class="px-5 py-3 text-right font-semibold text-zinc-800">₱1,640</td>
+                <td class="px-5 py-3 text-right text-emerald-700 font-semibold">₱492</td>
+              </tr>
+              <tr class="hover:bg-zinc-50 transition-colors">
+                <td class="px-5 py-3 font-medium text-zinc-800">Carlos Mendoza</td>
+                <td class="px-5 py-3 font-mono text-zinc-600">BDAY-CM-7703</td>
+                <td class="px-5 py-3 text-zinc-500">Aug 1, 2026 · 10:19 AM</td>
+                <td class="px-5 py-3 text-zinc-600">Marikina</td>
+                <td class="px-5 py-3 text-right font-semibold text-zinc-800">₱720</td>
+                <td class="px-5 py-3 text-right text-emerald-700 font-semibold">₱216</td>
+              </tr>
+              <tr class="hover:bg-zinc-50 transition-colors">
+                <td class="px-5 py-3 font-medium text-zinc-800">Liza Gomez</td>
+                <td class="px-5 py-3 font-mono text-zinc-600">BDAY-LG-9911</td>
+                <td class="px-5 py-3 text-zinc-500">Aug 1, 2026 · 11:45 AM</td>
+                <td class="px-5 py-3 text-zinc-600">Katipunan</td>
+                <td class="px-5 py-3 text-right font-semibold text-zinc-800">₱980</td>
+                <td class="px-5 py-3 text-right text-emerald-700 font-semibold">₱294</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="flex items-center justify-between px-5 py-3 border-t border-zinc-100">
+          <span class="text-xs text-zinc-400">Showing 5 of 284 redemptions</span>
+          <div class="flex items-center gap-1">
+            <button class="min-w-[32px] min-h-[32px] flex items-center justify-center rounded-lg text-zinc-400 hover:bg-zinc-100 disabled:opacity-40" disabled>
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
+            </button>
+            <span class="px-3 py-1 rounded-lg bg-brand-primary/10 text-brand-primary text-xs font-semibold">1</span>
+            <button class="min-w-[32px] min-h-[32px] flex items-center justify-center rounded-lg text-xs text-zinc-500 hover:bg-zinc-100">2</button>
+            <button class="min-w-[32px] min-h-[32px] flex items-center justify-center rounded-lg text-zinc-400 hover:bg-zinc-100">
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Open rate disclaimer -->
+      <div class="flex items-start gap-3 p-4 rounded-2xl bg-zinc-50 border border-zinc-200">
+        <svg class="w-4 h-4 text-zinc-400 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        <p class="text-xs text-zinc-500"><strong class="text-zinc-700">Open rates are shown but not used for engagement scoring.</strong> Apple Mail Privacy Protection and Google Image Proxy pre-fetch tracking pixels, registering opens that never happened. Clicks and in-store redemptions are the reliable engagement signals.</p>
+      </div>
+
+    </main>
+  </div>
+
+</body>
+</html>

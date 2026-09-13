@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Araneta — Design Review Hub</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: { brand: { primary: '#E1171E', accent: '#701E82' } },
+          fontFamily: { sans: ['Plus Jakarta Sans', 'sans-serif'] }
+        }
+      }
+    }
+  </script>
+  <style>
+    body { font-family: 'Plus Jakarta Sans', sans-serif; }
+  </style>
+</head>
+<body class="bg-zinc-50 text-zinc-900 antialiased min-h-screen">
+
+  <div class="max-w-4xl mx-auto px-6 py-16">
+
+    <!-- Header -->
+    <div class="mb-12">
+      <div class="flex items-center gap-3 mb-4">
+        <div class="w-10 h-10 rounded-full bg-brand-primary flex items-center justify-center text-white font-bold text-sm">A</div>
+        <div>
+          <div class="text-[10px] font-semibold uppercase tracking-wider text-zinc-400">Araneta Group</div>
+          <h1 class="text-xl font-bold text-zinc-900">Design Review Hub</h1>
+        </div>
+      </div>
+      <p class="text-sm text-zinc-500 max-w-lg">Internal mockups and design proposals for stakeholder review and approval. All screens are static HTML — no data is real.</p>
+    </div>
+
+    <!-- Projects -->
+    <div class="space-y-8">
+
+      <!-- Engage -->
+      <div>
+        <div class="flex items-center gap-2 mb-4">
+          <div class="w-2 h-2 rounded-full bg-brand-primary"></div>
+          <h2 class="text-xs font-bold uppercase tracking-wider text-zinc-400">Engage — Customer Campaign Platform</h2>
+          <span class="px-2 py-0.5 rounded-full text-[10px] font-semibold bg-amber-50 text-amber-700 border border-amber-200">Proposed · Not Approved</span>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <a href="engage/01-campaigns-list.html" class="group block bg-white rounded-2xl border border-zinc-200 p-5 hover:border-brand-primary hover:shadow-md transition-all">
+            <div class="w-8 h-8 rounded-xl bg-brand-primary/10 flex items-center justify-center mb-3">
+              <svg class="w-4 h-4 text-brand-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 10h16M4 14h16M4 18h16"/></svg>
+            </div>
+            <div class="text-sm font-bold text-zinc-900 group-hover:text-brand-primary transition-colors">Campaign List</div>
+            <div class="text-xs text-zinc-500 mt-1">Index view with filters, status, department, and stats</div>
+            <div class="text-[10px] text-zinc-400 mt-3">Screen 1 of 3</div>
+          </a>
+          <a href="engage/02-campaign-wizard.html" class="group block bg-white rounded-2xl border border-zinc-200 p-5 hover:border-brand-primary hover:shadow-md transition-all">
+            <div class="w-8 h-8 rounded-xl bg-brand-primary/10 flex items-center justify-center mb-3">
+              <svg class="w-4 h-4 text-brand-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/></svg>
+            </div>
+            <div class="text-sm font-bold text-zinc-900 group-hover:text-brand-primary transition-colors">Campaign Wizard</div>
+            <div class="text-xs text-zinc-500 mt-1">5-step creation flow: Setup → Audience → Content → Review → Send</div>
+            <div class="text-[10px] text-zinc-400 mt-3">Screen 2 of 3</div>
+          </a>
+          <a href="engage/03-campaign-report.html" class="group block bg-white rounded-2xl border border-zinc-200 p-5 hover:border-brand-primary hover:shadow-md transition-all">
+            <div class="w-8 h-8 rounded-xl bg-emerald-50 flex items-center justify-center mb-3">
+              <svg class="w-4 h-4 text-emerald-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+            </div>
+            <div class="text-sm font-bold text-zinc-900 group-hover:text-brand-primary transition-colors">Campaign Report</div>
+            <div class="text-xs text-zinc-500 mt-1">Post-send analytics: KPIs, ROI, redemption log, delivery health</div>
+            <div class="text-[10px] text-zinc-400 mt-3">Screen 3 of 3</div>
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Footer -->
+    <div class="mt-16 pt-8 border-t border-zinc-200 text-xs text-zinc-400">
+      Internal use only. All mockups are static HTML with no real customer data.
+    </div>
+  </div>
+
+</body>
+</html>
