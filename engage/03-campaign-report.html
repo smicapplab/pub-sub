@@ -23,6 +23,49 @@
     .scrollbar-thin::-webkit-scrollbar-thumb { background: rgba(161,161,170,0.3); border-radius: 10px; }
     /* Sparkline bar chart simulation */
     .bar { display: inline-block; background: #E1171E; border-radius: 2px 2px 0 0; width: 100%; }
+
+    /* ── Interactive hint animations ── */
+    @keyframes cta-ring {
+      0%   { box-shadow: 0 0 0 0 rgba(225,23,30,0.55), 0 1px 3px rgba(0,0,0,0.12); }
+      60%  { box-shadow: 0 0 0 8px rgba(225,23,30,0), 0 1px 3px rgba(0,0,0,0.12); }
+      100% { box-shadow: 0 0 0 0 rgba(225,23,30,0), 0 1px 3px rgba(0,0,0,0.12); }
+    }
+    .btn-primary-hint { animation: cta-ring 1.8s ease-out infinite; position: relative; }
+
+    /* Clickable table rows */
+    @keyframes row-hint {
+      0%, 85%, 100% { border-left: 3px solid transparent; }
+      90%            { border-left: 3px solid rgba(225,23,30,0.5); }
+    }
+    .row-hint { animation: row-hint 4s ease-in-out infinite; padding-left: 1px; }
+
+    /* KPI card subtle lift on hover hint */
+    @keyframes card-lift {
+      0%, 100% { transform: translateY(0); box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
+      50%       { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(0,0,0,0.08); }
+    }
+    .bar-animated { animation: bar-grow 1s ease-out forwards; transform-origin: bottom; }
+    @keyframes bar-grow { from { transform: scaleY(0); } to { transform: scaleY(1); } }
+
+    /* Floating badge */
+    .mockup-badge {
+      position: fixed; bottom: 20px; right: 20px; z-index: 9999;
+      background: #18181b; color: #fff; font-size: 10px; font-weight: 700;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      padding: 6px 14px; border-radius: 999px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+      animation: badge-float 3s ease-in-out infinite;
+      pointer-events: none;
+    }
+    @keyframes badge-float {
+      0%, 100% { transform: translateY(0); opacity: 0.9; }
+      50%       { transform: translateY(-5px); opacity: 1; }
+    }
+    .mockup-badge .dot {
+      display: inline-block; width: 6px; height: 6px;
+      background: #E1171E; border-radius: 50%; margin-right: 6px;
+      animation: cta-ring 1.4s ease-out infinite;
+    }
   </style>
 </head>
 <body class="bg-zinc-50 text-zinc-900 antialiased min-h-screen flex">
@@ -96,7 +139,7 @@
           <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
           Export
         </button>
-        <button class="px-3 py-2 rounded-xl bg-brand-primary text-white text-xs font-semibold hover:bg-red-700 transition-colors min-h-[44px] flex items-center gap-2">
+        <button class="btn-primary-hint px-3 py-2 rounded-xl bg-brand-primary text-white text-xs font-semibold hover:bg-red-700 transition-colors min-h-[44px] flex items-center gap-2">
           <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
           Duplicate Campaign
         </button>
@@ -404,6 +447,8 @@
 
     </main>
   </div>
+
+<div class="mockup-badge"><span class="dot"></span>Mockup — data is illustrative</div>
 
 </body>
 </html>

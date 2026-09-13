@@ -24,6 +24,57 @@
     .step-done { background: #E1171E; color: white; }
     .step-active { background: #E1171E; color: white; box-shadow: 0 0 0 3px rgba(225,23,30,0.2); }
     .step-pending { background: #e4e4e7; color: #71717a; }
+
+    /* ── Interactive hint animations ── */
+    @keyframes cta-ring {
+      0%   { box-shadow: 0 0 0 0 rgba(225,23,30,0.55), 0 1px 3px rgba(0,0,0,0.12); }
+      60%  { box-shadow: 0 0 0 8px rgba(225,23,30,0), 0 1px 3px rgba(0,0,0,0.12); }
+      100% { box-shadow: 0 0 0 0 rgba(225,23,30,0), 0 1px 3px rgba(0,0,0,0.12); }
+    }
+    .btn-primary-hint { animation: cta-ring 1.8s ease-out infinite; position: relative; }
+
+    /* Step dot ping — tells viewers the numbered dots are clickable */
+    @keyframes step-ping {
+      0%   { box-shadow: 0 0 0 0 rgba(225,23,30,0.5); }
+      70%  { box-shadow: 0 0 0 6px rgba(225,23,30,0); }
+      100% { box-shadow: 0 0 0 0 rgba(225,23,30,0); }
+    }
+    .step-pending { animation: none; }
+    button[data-stepdot].step-pending:hover > div { animation: step-ping 1s ease-out; }
+    /* All non-active step dots get a subtle idle pulse */
+    @keyframes dot-idle {
+      0%, 100% { opacity: 1; }
+      50%       { opacity: 0.55; }
+    }
+    [data-stepdot].step-pending { animation: dot-idle 2s ease-in-out infinite; }
+
+    /* Next / Back buttons */
+    @keyframes icon-nudge {
+      0%, 100% { transform: translateX(0); }
+      40%       { transform: translateX(4px); }
+      60%       { transform: translateX(2px); }
+    }
+    .next-hint svg { animation: icon-nudge 1.8s ease-in-out infinite; }
+
+    /* Floating badge */
+    .mockup-badge {
+      position: fixed; bottom: 20px; right: 20px; z-index: 9999;
+      background: #18181b; color: #fff; font-size: 10px; font-weight: 700;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      padding: 6px 14px; border-radius: 999px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+      animation: badge-float 3s ease-in-out infinite;
+      pointer-events: none;
+    }
+    @keyframes badge-float {
+      0%, 100% { transform: translateY(0); opacity: 0.9; }
+      50%       { transform: translateY(-5px); opacity: 1; }
+    }
+    .mockup-badge .dot {
+      display: inline-block; width: 6px; height: 6px;
+      background: #E1171E; border-radius: 50%; margin-right: 6px;
+      animation: cta-ring 1.4s ease-out infinite;
+    }
   </style>
   <script>
     let currentStep = 1;
@@ -254,7 +305,7 @@
           </div>
 
           <div class="flex justify-end mt-4">
-            <button onclick="goTo(2)" class="px-6 py-2.5 rounded-xl bg-brand-primary text-white text-xs font-semibold hover:bg-red-700 transition-colors min-h-[44px] flex items-center gap-2">
+            <button onclick="goTo(2)" class="next-hint btn-primary-hint px-6 py-2.5 rounded-xl bg-brand-primary text-white text-xs font-semibold hover:bg-red-700 transition-colors min-h-[44px] flex items-center gap-2">
               Next: Audience
               <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
             </button>
@@ -368,7 +419,7 @@
 
           <div class="flex justify-between mt-4">
             <button onclick="goTo(1)" class="px-5 py-2.5 rounded-xl border border-zinc-200 text-zinc-600 text-xs font-semibold hover:bg-zinc-50 transition-colors min-h-[44px]">Back</button>
-            <button onclick="goTo(3)" class="px-6 py-2.5 rounded-xl bg-brand-primary text-white text-xs font-semibold hover:bg-red-700 transition-colors min-h-[44px] flex items-center gap-2">
+            <button onclick="goTo(3)" class="next-hint btn-primary-hint px-6 py-2.5 rounded-xl bg-brand-primary text-white text-xs font-semibold hover:bg-red-700 transition-colors min-h-[44px] flex items-center gap-2">
               Next: Content
               <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
             </button>
@@ -487,7 +538,7 @@ Pizza Hut Philippines</div>
 
           <div class="flex justify-between mt-4">
             <button onclick="goTo(2)" class="px-5 py-2.5 rounded-xl border border-zinc-200 text-zinc-600 text-xs font-semibold hover:bg-zinc-50 transition-colors min-h-[44px]">Back</button>
-            <button onclick="goTo(4)" class="px-6 py-2.5 rounded-xl bg-brand-primary text-white text-xs font-semibold hover:bg-red-700 transition-colors min-h-[44px] flex items-center gap-2">
+            <button onclick="goTo(4)" class="next-hint btn-primary-hint px-6 py-2.5 rounded-xl bg-brand-primary text-white text-xs font-semibold hover:bg-red-700 transition-colors min-h-[44px] flex items-center gap-2">
               Next: Review
               <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
             </button>
@@ -597,7 +648,7 @@ Pizza Hut Philippines</div>
 
           <div class="flex justify-between mt-4">
             <button onclick="goTo(3)" class="px-5 py-2.5 rounded-xl border border-zinc-200 text-zinc-600 text-xs font-semibold hover:bg-zinc-50 transition-colors min-h-[44px]">Back</button>
-            <button onclick="goTo(5)" class="px-6 py-2.5 rounded-xl bg-brand-primary text-white text-xs font-semibold hover:bg-red-700 transition-colors min-h-[44px] flex items-center gap-2">
+            <button onclick="goTo(5)" class="next-hint btn-primary-hint px-6 py-2.5 rounded-xl bg-brand-primary text-white text-xs font-semibold hover:bg-red-700 transition-colors min-h-[44px] flex items-center gap-2">
               Looks good — choose sending option
               <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
             </button>
@@ -666,6 +717,8 @@ Pizza Hut Philippines</div>
       </div>
     </main>
   </div>
+
+<div class="mockup-badge"><span class="dot"></span>Mockup — use numbered steps to navigate</div>
 
 </body>
 </html>
