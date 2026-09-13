@@ -23,7 +23,6 @@
     .scrollbar-thin::-webkit-scrollbar-thumb { background: rgba(161,161,170,0.3); border-radius: 10px; }
     /* Sparkline bar chart simulation */
     .bar { display: inline-block; background: #E1171E; border-radius: 2px 2px 0 0; width: 100%; }
-
     /* ── Interactive hint animations ── */
     @keyframes cta-ring {
       0%   { box-shadow: 0 0 0 0 rgba(225,23,30,0.55), 0 1px 3px rgba(0,0,0,0.12); }
@@ -31,14 +30,12 @@
       100% { box-shadow: 0 0 0 0 rgba(225,23,30,0), 0 1px 3px rgba(0,0,0,0.12); }
     }
     .btn-primary-hint { animation: cta-ring 1.8s ease-out infinite; position: relative; }
-
     /* Clickable table rows */
     @keyframes row-hint {
       0%, 85%, 100% { border-left: 3px solid transparent; }
       90%            { border-left: 3px solid rgba(225,23,30,0.5); }
     }
     .row-hint { animation: row-hint 4s ease-in-out infinite; padding-left: 1px; }
-
     /* KPI card subtle lift on hover hint */
     @keyframes card-lift {
       0%, 100% { transform: translateY(0); box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
@@ -46,7 +43,6 @@
     }
     .bar-animated { animation: bar-grow 1s ease-out forwards; transform-origin: bottom; }
     @keyframes bar-grow { from { transform: scaleY(0); } to { transform: scaleY(1); } }
-
     /* Floating badge */
     .mockup-badge {
       position: fixed; bottom: 20px; right: 20px; z-index: 9999;
@@ -69,7 +65,6 @@
   </style>
 </head>
 <body class="bg-zinc-50 text-zinc-900 antialiased min-h-screen flex">
-
   <!-- Sidebar -->
   <aside class="hidden lg:flex h-screen w-64 flex-col flex-shrink-0 bg-white/70 border-r border-zinc-200/80 backdrop-blur-xl sticky top-0">
     <div class="flex-1 flex flex-col overflow-y-auto scrollbar-thin p-3 space-y-4">
@@ -84,16 +79,8 @@
         </button>
       </div>
       <div class="space-y-1">
-        <a href="#" class="flex items-center gap-3 px-3 py-2 rounded-xl text-xs font-medium text-zinc-500 hover:bg-zinc-100 transition-colors">
-          <svg class="w-4 h-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
-          <span>Reports</span>
-        </a>
-        <a href="#" class="flex items-center gap-3 px-3 py-2 rounded-xl text-xs font-medium text-zinc-500 hover:bg-zinc-100 transition-colors">
-          <svg class="w-4 h-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
-          <span>Stores</span>
-        </a>
         <div class="px-2 pt-3 pb-1 text-[10px] font-semibold uppercase tracking-wider text-zinc-400">Engage</div>
-        <a href="01-campaigns-list.html" class="flex items-center gap-3 px-3 py-2 rounded-xl text-xs font-semibold bg-brand-primary/10 text-brand-primary">
+        <a href="01-campaigns-list.html" class="flex items-center gap-3 px-3 py-2 rounded-xl text-xs font-medium text-zinc-500 hover:bg-zinc-100 transition-colors">
           <svg class="w-4 h-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/></svg>
           <span>Campaigns</span>
         </a>
@@ -104,6 +91,10 @@
         <a href="#" class="flex items-center gap-3 px-3 py-2 rounded-xl text-xs font-medium text-zinc-500 hover:bg-zinc-100 transition-colors">
           <svg class="w-4 h-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"/></svg>
           <span>Templates</span>
+        </a>
+        <a href="03-campaign-report.html" class="flex items-center gap-3 px-3 py-2 rounded-xl text-xs font-semibold bg-brand-primary/10 text-brand-primary">
+          <svg class="w-4 h-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+          <span>Reports</span>
         </a>
       </div>
     </div>
@@ -117,10 +108,8 @@
       </button>
     </div>
   </aside>
-
   <!-- Main -->
   <div class="flex-1 flex flex-col min-h-screen min-w-0">
-
     <!-- Header -->
     <header class="sticky top-0 z-10 bg-white/80 backdrop-blur-xl border-b border-zinc-200/80 px-6 py-3 flex items-center gap-3">
       <a href="01-campaigns-list.html" class="min-w-[44px] min-h-[44px] flex items-center justify-center rounded-xl hover:bg-zinc-100 transition-colors text-zinc-500">
@@ -145,9 +134,7 @@
         </button>
       </div>
     </header>
-
     <main class="flex-1 p-6 space-y-5">
-
       <!-- Campaign meta row -->
       <div class="flex flex-wrap items-center gap-x-6 gap-y-1 text-xs text-zinc-500">
         <span><span class="text-zinc-400">Sent:</span> <strong class="text-zinc-700">Aug 1, 2026 · 9:00 AM</strong></span>
@@ -156,7 +143,6 @@
         <span><span class="text-zinc-400">Created by:</span> <strong class="text-zinc-700">Maria Reyes</strong></span>
         <span><span class="text-zinc-400">Channels:</span> <strong class="text-zinc-700">Email</strong></span>
       </div>
-
       <!-- KPI cards -->
       <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
         <div class="bg-white rounded-2xl border border-zinc-200 p-4 text-center">
@@ -189,10 +175,8 @@
           <div class="text-[10px] text-zinc-400">3.0%</div>
         </div>
       </div>
-
       <!-- ROI and cost row -->
       <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
-
         <!-- Financial summary -->
         <div class="bg-white rounded-2xl border border-zinc-200 p-5 space-y-4 lg:col-span-1">
           <div class="text-[10px] font-semibold uppercase tracking-wider text-zinc-400">Financial Summary</div>
@@ -222,7 +206,6 @@
             Net revenue = sum of redemption baskets minus (treatment group size × control group AOV × control conversion rate) minus gateway cost.
           </div>
         </div>
-
         <!-- Hourly redemption chart (simulated bars) -->
         <div class="bg-white rounded-2xl border border-zinc-200 p-5 lg:col-span-2">
           <div class="flex items-center justify-between mb-4">
@@ -262,10 +245,8 @@
           <div class="mt-3 text-[10px] text-zinc-400">Peak redemption window: 9:00–11:00 AM · 65% of total redemptions in first 2 hours</div>
         </div>
       </div>
-
       <!-- Two-column: by store + redemption table -->
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
-
         <!-- By store breakdown -->
         <div class="bg-white rounded-2xl border border-zinc-200 p-5">
           <div class="text-[10px] font-semibold uppercase tracking-wider text-zinc-400 mb-4">Redemptions by Store</div>
@@ -314,7 +295,6 @@
             </div>
           </div>
         </div>
-
         <!-- Delivery breakdown -->
         <div class="bg-white rounded-2xl border border-zinc-200 p-5">
           <div class="text-[10px] font-semibold uppercase tracking-wider text-zinc-400 mb-4">Delivery Health</div>
@@ -356,7 +336,6 @@
           </div>
         </div>
       </div>
-
       <!-- Redemption log table -->
       <div class="bg-white rounded-2xl border border-zinc-200 overflow-hidden">
         <div class="flex items-center justify-between px-5 py-3 border-b border-zinc-100">
@@ -438,17 +417,13 @@
           </div>
         </div>
       </div>
-
       <!-- Open rate disclaimer -->
       <div class="flex items-start gap-3 p-4 rounded-2xl bg-zinc-50 border border-zinc-200">
         <svg class="w-4 h-4 text-zinc-400 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
         <p class="text-xs text-zinc-500"><strong class="text-zinc-700">Open rates are shown but not used for engagement scoring.</strong> Apple Mail Privacy Protection and Google Image Proxy pre-fetch tracking pixels, registering opens that never happened. Clicks and in-store redemptions are the reliable engagement signals.</p>
       </div>
-
     </main>
   </div>
-
 <div class="mockup-badge"><span class="dot"></span>Mockup — data is illustrative</div>
-
 </body>
 </html>

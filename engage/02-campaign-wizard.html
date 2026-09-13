@@ -24,7 +24,6 @@
     .step-done { background: #E1171E; color: white; }
     .step-active { background: #E1171E; color: white; box-shadow: 0 0 0 3px rgba(225,23,30,0.2); }
     .step-pending { background: #e4e4e7; color: #71717a; }
-
     /* ── Interactive hint animations ── */
     @keyframes cta-ring {
       0%   { box-shadow: 0 0 0 0 rgba(225,23,30,0.55), 0 1px 3px rgba(0,0,0,0.12); }
@@ -32,7 +31,6 @@
       100% { box-shadow: 0 0 0 0 rgba(225,23,30,0), 0 1px 3px rgba(0,0,0,0.12); }
     }
     .btn-primary-hint { animation: cta-ring 1.8s ease-out infinite; position: relative; }
-
     /* Step dot ping — tells viewers the numbered dots are clickable */
     @keyframes step-ping {
       0%   { box-shadow: 0 0 0 0 rgba(225,23,30,0.5); }
@@ -47,7 +45,6 @@
       50%       { opacity: 0.55; }
     }
     [data-stepdot].step-pending { animation: dot-idle 2s ease-in-out infinite; }
-
     /* Next / Back buttons */
     @keyframes icon-nudge {
       0%, 100% { transform: translateX(0); }
@@ -55,7 +52,6 @@
       60%       { transform: translateX(2px); }
     }
     .next-hint svg { animation: icon-nudge 1.8s ease-in-out infinite; }
-
     /* Floating badge */
     .mockup-badge {
       position: fixed; bottom: 20px; right: 20px; z-index: 9999;
@@ -101,7 +97,6 @@
   </script>
 </head>
 <body class="bg-zinc-50 text-zinc-900 antialiased min-h-screen flex">
-
   <!-- Sidebar (same as list, collapsed to rail for focus) -->
   <aside class="hidden lg:flex h-screen w-64 flex-col flex-shrink-0 bg-white/70 border-r border-zinc-200/80 backdrop-blur-xl sticky top-0">
     <div class="flex-1 flex flex-col overflow-y-auto scrollbar-thin p-3 space-y-4">
@@ -117,14 +112,6 @@
         </button>
       </div>
       <div class="space-y-1">
-        <a href="#" class="flex items-center gap-3 px-3 py-2 rounded-xl text-xs font-medium text-zinc-500 hover:bg-zinc-100 transition-colors">
-          <svg class="w-4 h-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
-          <span>Reports</span>
-        </a>
-        <a href="#" class="flex items-center gap-3 px-3 py-2 rounded-xl text-xs font-medium text-zinc-500 hover:bg-zinc-100 transition-colors">
-          <svg class="w-4 h-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
-          <span>Stores</span>
-        </a>
         <div class="px-2 pt-3 pb-1 text-[10px] font-semibold uppercase tracking-wider text-zinc-400">Engage</div>
         <a href="01-campaigns-list.html" class="flex items-center gap-3 px-3 py-2 rounded-xl text-xs font-semibold bg-brand-primary/10 text-brand-primary">
           <svg class="w-4 h-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/></svg>
@@ -137,6 +124,10 @@
         <a href="#" class="flex items-center gap-3 px-3 py-2 rounded-xl text-xs font-medium text-zinc-500 hover:bg-zinc-100 transition-colors">
           <svg class="w-4 h-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"/></svg>
           <span>Templates</span>
+        </a>
+        <a href="03-campaign-report.html" class="flex items-center gap-3 px-3 py-2 rounded-xl text-xs font-medium text-zinc-500 hover:bg-zinc-100 transition-colors">
+          <svg class="w-4 h-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+          <span>Reports</span>
         </a>
       </div>
     </div>
@@ -152,10 +143,8 @@
       </button>
     </div>
   </aside>
-
   <!-- Main -->
   <div class="flex-1 flex flex-col min-h-screen min-w-0">
-
     <!-- Header -->
     <header class="sticky top-0 z-10 bg-white/80 backdrop-blur-xl border-b border-zinc-200/80 px-6 py-3 flex items-center gap-3">
       <a href="01-campaigns-list.html" class="min-w-[44px] min-h-[44px] flex items-center justify-center rounded-xl hover:bg-zinc-100 transition-colors text-zinc-500">
@@ -169,39 +158,33 @@
         <span class="text-xs text-zinc-400 italic">Saved as draft automatically</span>
       </div>
     </header>
-
     <!-- Step progress bar -->
     <div class="bg-white border-b border-zinc-200/80 px-6 py-4">
       <div class="flex items-center gap-0 max-w-3xl mx-auto">
-
         <!-- Step 1 -->
         <button onclick="goTo(1)" class="flex flex-col items-center gap-1.5 min-w-[60px]">
           <div data-stepdot="1" class="step-active w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold transition-all">1</div>
           <span data-steplabel="1" class="text-[10px] font-semibold text-zinc-900 whitespace-nowrap">Setup</span>
         </button>
         <div class="flex-1 h-px bg-zinc-200 mx-1"></div>
-
         <!-- Step 2 -->
         <button onclick="goTo(2)" class="flex flex-col items-center gap-1.5 min-w-[60px]">
           <div data-stepdot="2" class="step-pending w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold transition-all">2</div>
           <span data-steplabel="2" class="text-[10px] font-semibold text-zinc-400 whitespace-nowrap">Audience</span>
         </button>
         <div class="flex-1 h-px bg-zinc-200 mx-1"></div>
-
         <!-- Step 3 -->
         <button onclick="goTo(3)" class="flex flex-col items-center gap-1.5 min-w-[60px]">
           <div data-stepdot="3" class="step-pending w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold transition-all">3</div>
           <span data-steplabel="3" class="text-[10px] font-semibold text-zinc-400 whitespace-nowrap">Content</span>
         </button>
         <div class="flex-1 h-px bg-zinc-200 mx-1"></div>
-
         <!-- Step 4 -->
         <button onclick="goTo(4)" class="flex flex-col items-center gap-1.5 min-w-[60px]">
           <div data-stepdot="4" class="step-pending w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold transition-all">4</div>
           <span data-steplabel="4" class="text-[10px] font-semibold text-zinc-400 whitespace-nowrap">Review</span>
         </button>
         <div class="flex-1 h-px bg-zinc-200 mx-1"></div>
-
         <!-- Step 5 -->
         <button onclick="goTo(5)" class="flex flex-col items-center gap-1.5 min-w-[60px]">
           <div data-stepdot="5" class="step-pending w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold transition-all">5</div>
@@ -209,11 +192,9 @@
         </button>
       </div>
     </div>
-
     <!-- Step content area -->
     <main class="flex-1 p-6">
       <div class="max-w-3xl mx-auto space-y-4">
-
         <!-- ======================== STEP 1: SETUP ======================== -->
         <div data-step="1">
           <div class="bg-white rounded-2xl border border-zinc-200 p-6 space-y-5">
@@ -221,7 +202,6 @@
               <h2 class="text-sm font-bold text-zinc-900">Campaign Setup</h2>
               <p class="text-xs text-zinc-500 mt-0.5">Name this campaign, choose channels, and assign department ownership.</p>
             </div>
-
             <div class="space-y-4">
               <!-- Name -->
               <div>
@@ -229,13 +209,11 @@
                 <input type="text" value="Rainy Day Soup Promo — Katipunan" class="w-full px-3 py-2.5 text-sm border border-zinc-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-primary/30 text-zinc-900 placeholder-zinc-400" />
                 <p class="text-[10px] text-zinc-400 mt-1">Internal name. Not shown to customers.</p>
               </div>
-
               <!-- Description -->
               <div>
                 <label class="block text-xs font-semibold text-zinc-700 mb-1.5">Description <span class="text-zinc-400 font-normal">(optional)</span></label>
                 <textarea rows="2" class="w-full px-3 py-2.5 text-sm border border-zinc-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-primary/30 text-zinc-900 placeholder-zinc-400 resize-none" placeholder="What is this campaign for?">Auto-triggers when rain is detected over Katipunan store polygon. Sends soup combo discount to nearby active customers.</textarea>
               </div>
-
               <!-- Owning Department -->
               <div>
                 <label class="block text-xs font-semibold text-zinc-700 mb-1.5">Owning Department <span class="text-brand-primary">*</span></label>
@@ -245,7 +223,6 @@
                 </select>
                 <p class="text-[10px] text-zinc-400 mt-1">Campaign costs and spend will be attributed to this department. Defaults to your first assigned department.</p>
               </div>
-
               <!-- Channels -->
               <div>
                 <label class="block text-xs font-semibold text-zinc-700 mb-2">Channels <span class="text-brand-primary">*</span></label>
@@ -273,7 +250,6 @@
                 </div>
                 <p class="text-[10px] text-zinc-400 mt-2">Viber falls back to SMS automatically if the customer is not on Viber.</p>
               </div>
-
               <!-- Trigger type -->
               <div>
                 <label class="block text-xs font-semibold text-zinc-700 mb-2">Campaign Type</label>
@@ -303,7 +279,6 @@
               </div>
             </div>
           </div>
-
           <div class="flex justify-end mt-4">
             <button onclick="goTo(2)" class="next-hint btn-primary-hint px-6 py-2.5 rounded-xl bg-brand-primary text-white text-xs font-semibold hover:bg-red-700 transition-colors min-h-[44px] flex items-center gap-2">
               Next: Audience
@@ -311,7 +286,6 @@
             </button>
           </div>
         </div>
-
         <!-- ======================== STEP 2: AUDIENCE ======================== -->
         <div data-step="2" style="display:none">
           <div class="bg-white rounded-2xl border border-zinc-200 p-6 space-y-5">
@@ -327,11 +301,9 @@
                 <div class="text-[10px] text-emerald-600 mt-0.5">Live count</div>
               </div>
             </div>
-
             <!-- Filters -->
             <div class="space-y-3">
               <div class="text-[10px] font-semibold uppercase tracking-wider text-zinc-400">Filters — all conditions must match</div>
-
               <!-- Filter row 1 -->
               <div class="flex items-center gap-2 flex-wrap">
                 <select class="text-xs border border-zinc-200 rounded-xl px-3 py-2 bg-white text-zinc-700 focus:outline-none focus:ring-2 focus:ring-brand-primary/30 min-h-[36px]">
@@ -356,7 +328,6 @@
                   <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
                 </button>
               </div>
-
               <!-- Filter row 2 -->
               <div class="flex items-center gap-2 flex-wrap">
                 <select class="text-xs border border-zinc-200 rounded-xl px-3 py-2 bg-white text-zinc-700 focus:outline-none min-h-[36px]">
@@ -377,7 +348,6 @@
                   <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
                 </button>
               </div>
-
               <!-- Filter row 3 -->
               <div class="flex items-center gap-2 flex-wrap">
                 <select class="text-xs border border-zinc-200 rounded-xl px-3 py-2 bg-white text-zinc-700 focus:outline-none min-h-[36px]">
@@ -392,14 +362,12 @@
                   <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
                 </button>
               </div>
-
               <!-- Add filter -->
               <button class="flex items-center gap-2 px-3 py-2 rounded-xl border border-dashed border-zinc-300 text-zinc-400 text-xs hover:border-brand-primary hover:text-brand-primary transition-colors w-full justify-center">
                 <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg>
                 Add filter
               </button>
             </div>
-
             <!-- Exclusions notice -->
             <div class="flex items-start gap-3 p-3 rounded-xl bg-amber-50 border border-amber-200">
               <svg class="w-4 h-4 text-amber-600 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
@@ -407,7 +375,6 @@
                 <span class="font-semibold">1,203 recipients will be excluded automatically:</span> no marketing consent (1,021), unsubscribed (102), hard bounce (80). This filter cannot be disabled.
               </div>
             </div>
-
             <!-- Frequency cap notice -->
             <div class="flex items-start gap-3 p-3 rounded-xl bg-zinc-50 border border-zinc-200">
               <svg class="w-4 h-4 text-zinc-400 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
@@ -416,7 +383,6 @@
               </div>
             </div>
           </div>
-
           <div class="flex justify-between mt-4">
             <button onclick="goTo(1)" class="px-5 py-2.5 rounded-xl border border-zinc-200 text-zinc-600 text-xs font-semibold hover:bg-zinc-50 transition-colors min-h-[44px]">Back</button>
             <button onclick="goTo(3)" class="next-hint btn-primary-hint px-6 py-2.5 rounded-xl bg-brand-primary text-white text-xs font-semibold hover:bg-red-700 transition-colors min-h-[44px] flex items-center gap-2">
@@ -425,7 +391,6 @@
             </button>
           </div>
         </div>
-
         <!-- ======================== STEP 3: CONTENT ======================== -->
         <div data-step="3" style="display:none">
           <div class="bg-white rounded-2xl border border-zinc-200 p-6 space-y-5">
@@ -433,13 +398,11 @@
               <h2 class="text-sm font-bold text-zinc-900">Message Content</h2>
               <p class="text-xs text-zinc-500 mt-0.5">Write once. The template is reusable across future campaigns.</p>
             </div>
-
             <!-- Channel tabs -->
             <div class="flex items-center gap-1 border-b border-zinc-100 pb-0">
               <button class="px-4 py-2 text-xs font-semibold text-brand-primary border-b-2 border-brand-primary -mb-px">Email</button>
               <button class="px-4 py-2 text-xs font-medium text-zinc-400 hover:text-zinc-700 border-b-2 border-transparent -mb-px">Viber</button>
             </div>
-
             <!-- Template selector -->
             <div>
               <label class="block text-xs font-semibold text-zinc-700 mb-1.5">Template</label>
@@ -453,29 +416,22 @@
                 <button class="px-3 py-2.5 rounded-xl border border-zinc-200 text-xs font-semibold text-zinc-600 hover:bg-zinc-50 transition-colors min-h-[40px]">Edit</button>
               </div>
             </div>
-
             <!-- Subject line -->
             <div>
               <label class="block text-xs font-semibold text-zinc-700 mb-1.5">Subject Line</label>
               <input type="text" value="It's raining — come in for hot soup, {{first_name}}! 🍜" class="w-full px-3 py-2.5 text-sm border border-zinc-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-primary/30" />
               <p class="text-[10px] text-zinc-400 mt-1">Merge fields: <code class="bg-zinc-100 px-1 rounded">&#123;&#123;first_name&#125;&#125;</code> <code class="bg-zinc-100 px-1 rounded">&#123;&#123;store_name&#125;&#125;</code> <code class="bg-zinc-100 px-1 rounded">&#123;&#123;promo_code&#125;&#125;</code> <code class="bg-zinc-100 px-1 rounded">&#123;&#123;discount_label&#125;&#125;</code></p>
             </div>
-
             <!-- 2-col: editor + preview -->
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
               <!-- Body editor -->
               <div>
                 <label class="block text-xs font-semibold text-zinc-700 mb-1.5">Body</label>
                 <textarea rows="8" class="w-full px-3 py-2.5 text-sm border border-zinc-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-primary/30 resize-none font-mono text-xs">Hi {{first_name}},
-
 The rain in {{store_name}}'s area calls for something warm.
-
 Show this email at the counter and enjoy a hot soup combo at {{discount_label}} off. Your personal code:
-
   {{promo_code}}
-
 Valid this rainy afternoon only. One-time use.
-
 See you soon,
 Pizza Hut Philippines</textarea>
               </div>
@@ -488,21 +444,15 @@ Pizza Hut Philippines</textarea>
                     <div class="text-[10px] text-zinc-400"><span class="font-semibold text-zinc-600">Subject:</span> It's raining — come in for hot soup, Maria! 🍜</div>
                   </div>
                   <div class="p-4 text-xs text-zinc-700 leading-relaxed whitespace-pre-line bg-white">Hi Maria,
-
 The rain in Pizza Hut Katipunan's area calls for something warm.
-
 Show this email at the counter and enjoy a hot soup combo at <span class="font-bold text-brand-primary">30% off</span>. Your personal code:
-
   <span class="font-mono font-bold text-zinc-900 bg-zinc-100 px-2 py-0.5 rounded">RAIN-MR-7840</span>
-
 Valid this rainy afternoon only. One-time use.
-
 See you soon,
 Pizza Hut Philippines</div>
                 </div>
               </div>
             </div>
-
             <!-- Offer code config -->
             <div class="p-4 bg-zinc-50 rounded-xl border border-zinc-200 space-y-3">
               <div class="text-[10px] font-semibold uppercase tracking-wider text-zinc-400">Offer Code Settings</div>
@@ -535,7 +485,6 @@ Pizza Hut Philippines</div>
               <p class="text-[10px] text-zinc-400">Each recipient gets a unique single-use QR code. Store staff scan it to apply the discount.</p>
             </div>
           </div>
-
           <div class="flex justify-between mt-4">
             <button onclick="goTo(2)" class="px-5 py-2.5 rounded-xl border border-zinc-200 text-zinc-600 text-xs font-semibold hover:bg-zinc-50 transition-colors min-h-[44px]">Back</button>
             <button onclick="goTo(4)" class="next-hint btn-primary-hint px-6 py-2.5 rounded-xl bg-brand-primary text-white text-xs font-semibold hover:bg-red-700 transition-colors min-h-[44px] flex items-center gap-2">
@@ -544,7 +493,6 @@ Pizza Hut Philippines</div>
             </button>
           </div>
         </div>
-
         <!-- ======================== STEP 4: REVIEW ======================== -->
         <div data-step="4" style="display:none">
           <!-- Review content moved to separate file for depth — linking to it -->
@@ -556,7 +504,6 @@ Pizza Hut Philippines</div>
               </div>
               <span class="px-2.5 py-1 rounded-full text-[10px] font-semibold bg-amber-50 text-amber-700 border border-amber-200">Requires Confirmation</span>
             </div>
-
             <!-- Summary grid -->
             <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
               <div class="p-3 rounded-xl bg-zinc-50 border border-zinc-200 text-center">
@@ -576,7 +523,6 @@ Pizza Hut Philippines</div>
                 <div class="text-[10px] text-zinc-400 mt-0.5">Excluded (auto)</div>
               </div>
             </div>
-
             <!-- Exclusion breakdown -->
             <div class="space-y-2">
               <div class="text-[10px] font-semibold uppercase tracking-wider text-zinc-400">Exclusion Breakdown</div>
@@ -599,7 +545,6 @@ Pizza Hut Philippines</div>
                 </div>
               </div>
             </div>
-
             <!-- Campaign details summary -->
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
               <div class="space-y-2">
@@ -617,7 +562,6 @@ Pizza Hut Philippines</div>
                 <div class="flex justify-between"><span class="text-zinc-500">Cost centre</span><span class="font-medium text-zinc-800">CC-BRD-PH-001</span></div>
               </div>
             </div>
-
             <!-- 5 sample messages -->
             <div class="space-y-2">
               <div class="text-[10px] font-semibold uppercase tracking-wider text-zinc-400">5 Rendered Sample Messages</div>
@@ -645,7 +589,6 @@ Pizza Hut Philippines</div>
               </div>
             </div>
           </div>
-
           <div class="flex justify-between mt-4">
             <button onclick="goTo(3)" class="px-5 py-2.5 rounded-xl border border-zinc-200 text-zinc-600 text-xs font-semibold hover:bg-zinc-50 transition-colors min-h-[44px]">Back</button>
             <button onclick="goTo(5)" class="next-hint btn-primary-hint px-6 py-2.5 rounded-xl bg-brand-primary text-white text-xs font-semibold hover:bg-red-700 transition-colors min-h-[44px] flex items-center gap-2">
@@ -654,7 +597,6 @@ Pizza Hut Philippines</div>
             </button>
           </div>
         </div>
-
         <!-- ======================== STEP 5: SEND ======================== -->
         <div data-step="5" style="display:none">
           <div class="bg-white rounded-2xl border border-zinc-200 p-6 space-y-5">
@@ -662,7 +604,6 @@ Pizza Hut Philippines</div>
               <h2 class="text-sm font-bold text-zinc-900">Send Options</h2>
               <p class="text-xs text-zinc-500 mt-0.5">The first dispatch of any new campaign must be a dry run.</p>
             </div>
-
             <!-- Options -->
             <div class="space-y-3">
               <label class="flex items-start gap-4 p-4 rounded-xl border-2 border-brand-primary bg-brand-primary/5 cursor-pointer">
@@ -690,7 +631,6 @@ Pizza Hut Philippines</div>
                 </div>
               </label>
             </div>
-
             <!-- Final confirmation callout -->
             <div class="p-4 rounded-xl bg-zinc-50 border border-zinc-200">
               <div class="text-xs font-semibold text-zinc-700 mb-1">You are about to send a dry run to:</div>
@@ -698,7 +638,6 @@ Pizza Hut Philippines</div>
               <div class="text-xs text-zinc-400 mt-2">No real customers will be contacted. Dry run results will appear in the campaign report.</div>
             </div>
           </div>
-
           <!-- Confirm action bar -->
           <div class="mt-4 p-4 bg-zinc-900 rounded-2xl flex items-center justify-between gap-4">
             <div class="text-xs text-zinc-300">
@@ -713,12 +652,9 @@ Pizza Hut Philippines</div>
             </div>
           </div>
         </div>
-
       </div>
     </main>
   </div>
-
 <div class="mockup-badge"><span class="dot"></span>Mockup — use numbered steps to navigate</div>
-
 </body>
 </html>
